@@ -1,0 +1,36 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ output extension=".cs" #>
+<# CodeGenerationTools code = new CodeGenerationTools(this);
+MetadataLoader loader = new MetadataLoader(this);
+CodeRegion region = new CodeRegion(this, 1);
+MetadataTools ef = new MetadataTools(this);
+string inputFile = @"..\\SLYX.Model\\ModelDB.edmx";
+EdmItemCollection ItemCollection = loader.CreateEdmItemCollection(inputFile);
+string namespaceName = code.VsNamespaceSuggestion();
+EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileManager.Create(this);
+#>
+using System;
+using SLYX.Model;
+using SLYX.IBLL;
+namespace SLYX.BLL
+{
+
+<#
+
+    //使用foreach循环遍历ItemCollection.GetItems<EntityType>集合
+
+    foreach(EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e=>e.Name))
+
+    { #>
+        public partial class <#=entity.Name#>BLL : BaseBLL<<#=entity.Name#>>, I<#=entity.Name#>BLL
+		{
+		        public override void SetCurrentRepository()
+				{
+					//设置当前仓储为Role仓储
+					CurrentRepository = DAL.DbContextFactory.<#=entity.Name#>DAL;
+				}
+		}
+<#}#>
+
+}
