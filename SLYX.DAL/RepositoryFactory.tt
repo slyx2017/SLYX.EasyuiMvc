@@ -12,11 +12,11 @@ EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileMana
 #>
 using System;
 using SLYX.Model;
-using SLYX.IBLL;
-using SLYX.DAL;
-namespace SLYX.BLL
+using SLYX.IDAL;
+namespace SLYX.DAL
 {
-
+        public static class RepositoryFactory
+		{
 <#
 
     //使用foreach循环遍历ItemCollection.GetItems<EntityType>集合
@@ -24,14 +24,12 @@ namespace SLYX.BLL
     foreach(EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e=>e.Name))
 
     { #>
-        public partial class <#=entity.Name#>BLL : BaseBLL<<#=entity.Name#>>, I<#=entity.Name#>BLL
-		{
-		    public override void SetCurrentRepository()
-			{
-				//设置当前仓储为<#=entity.Name#>仓储
-				CurrentRepository = _dbSession.<#=entity.Name#>DAL;
-			}
-		}
-<#}#>
 
+			 public static I<#=entity.Name#>DAL <#=entity.Name#>DAL 
+			 {
+				 get { return new <#=entity.Name#>DAL(); }
+			 }
+		
+<#}#>
+}
 }

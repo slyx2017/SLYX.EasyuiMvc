@@ -8,13 +8,11 @@ namespace SLYX.DAL
     public class BaseDAL<T> where T : class
     {
         //创建EF框架的上下文
-        private DbContext db = new ZxDBEntities();
+        private DbContext db = EFContextFactory.GetCurrentDbContext();
         // 实现对数据库的添加功能,添加实现EF框架的引用
         public T AddEntity(T entity)
         {
             db.Entry<T>(entity).State = EntityState.Modified;
-            //下面的写法统一
-            db.SaveChanges();
             return entity;
         }
         //实现对数据库的修改功能

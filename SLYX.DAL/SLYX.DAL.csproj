@@ -45,6 +45,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDAL.cs" />
+    <Compile Include="DBSessionFactory.cs" />
+    <Compile Include="EFContextFactory.cs" />
+    <Compile Include="RepositoryFactory.cs">
+      <DependentUpon>RepositoryFactory.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DBSession.cs">
+      <DependentUpon>DBSession.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="DAL.cs">
       <DependentUpon>DAL.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -63,6 +75,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="RepositoryFactory.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RepositoryFactory.cs</LastGenOutput>
+    </Content>
+    <Content Include="DBSession.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DBSession.cs</LastGenOutput>
+    </Content>
     <Content Include="DAL.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DAL.cs</LastGenOutput>

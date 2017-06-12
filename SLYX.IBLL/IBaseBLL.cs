@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace SLYX.IBLL
 {
-    public interface IBaseBLL<T> where T : class, new()
+    public partial interface IBaseBLL<T> where T : class, new()
     {
         // 实现对数据库的添加功能,添加实现EF框架的引用
         T AddEntity(T entity);

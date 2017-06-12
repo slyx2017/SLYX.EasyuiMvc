@@ -2,15 +2,15 @@
 using System.Linq;
 using SLYX.IDAL;
 using System.Linq.Expressions;
+using SLYX.DAL;
+using System.Reflection;
+
 namespace SLYX.BLL
 {
     public abstract class BaseBLL<T> where T : class, new()
     {
-        public IBaseDAL<T> CurrentRepository
-        {
-            get;
-            set;
-        }
+        public IBaseDAL<T> CurrentRepository;
+        public IDBSession _dbSession = DBSessionFactory.GetCurrentDbSession();
         //基类的构造函数
         public BaseBLL()
         {
@@ -23,17 +23,21 @@ namespace SLYX.BLL
         public T AddEntity(T entity)
         {
             //调用T对应的仓储来做添加工作
-            return CurrentRepository.AddEntity(entity);
+            var AddEntity = CurrentRepository.AddEntity(entity);
+            _dbSession.SaveChanges();
+            return AddEntity;
         }
         //实现对数据的修改功能
         public bool UpdateEntity(T entity)
         {
-            return CurrentRepository.UpdateEntity(entity);
+            CurrentRepository.UpdateEntity(entity);
+            return _dbSession.SaveChanges() > 0;
         }
         //实现对数据库的删除功能
         public bool DeleteEntity(T entity)
         {
-            return CurrentRepository.DeleteEntity(entity);
+            CurrentRepository.DeleteEntity(entity);
+            return _dbSession.SaveChanges() > 0;
         }
         //实现对数据库的查询  --简单查询
         public IQueryable<T> LoadEntities(Expression<Func<T, bool>> whereLambda)

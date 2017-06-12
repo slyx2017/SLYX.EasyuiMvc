@@ -49,6 +49,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SLYX.DAL\SLYX.DAL.csproj">
+      <Project>{44751587-a6d3-4ac8-b14a-55cf04ec47ce}</Project>
+      <Name>SLYX.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SLYX.IBLL\SLYX.IBLL.csproj">
       <Project>{7F480FAB-6E80-495C-8279-3A55E9488A49}</Project>
       <Name>SLYX.IBLL</Name>

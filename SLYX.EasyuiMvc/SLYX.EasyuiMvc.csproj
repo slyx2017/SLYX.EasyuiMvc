@@ -455,6 +455,7 @@
     <Content Include="Content\js\Jquery.Easyui\themes\icons\sum.png" />
     <Content Include="Content\js\Jquery.Easyui\themes\icons\tip.png" />
     <Content Include="Content\js\Jquery.Easyui\themes\icons\undo.png" />
+    <Content Include="Content\js\Jquery\initUserjs.js" />
     <Content Include="Content\js\Jquery\jquery-1.7.2.min.js" />
     <Content Include="Content\js\Jquery\loginjs.js" />
     <Content Include="Global.asax" />
@@ -462,6 +463,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -506,6 +508,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Views\Base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SLYX.BLL\SLYX.BLL.csproj">
+      <Project>{ead4127a-3324-49dd-b952-73daa1843c3d}</Project>
+      <Name>SLYX.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SLYX.IBLL\SLYX.IBLL.csproj">
+      <Project>{7f480fab-6e80-495c-8279-3a55e9488a49}</Project>
+      <Name>SLYX.IBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SLYX.Model\SLYX.Model.csproj">
+      <Project>{bafa3437-fffd-4cd7-812e-a2e06077a45a}</Project>
+      <Name>SLYX.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
