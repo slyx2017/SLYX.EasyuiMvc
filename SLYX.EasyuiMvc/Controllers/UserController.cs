@@ -23,18 +23,5 @@ namespace SLYX.EasyuiMvc.Controllers
             var result = new { total = total, rows = data };
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult Login()
-        {
-            return View();
-        }
-        // GET: User
-        public JsonResult CheckLogin()
-        {
-            SLYX.Common.AjaxMsgModel ajaxMsg = new Common.AjaxMsgModel() { Statu = "err", Msg = "登录失败！" };
-
-            ajaxMsg.Statu = "ok";
-            ajaxMsg.Msg = "登录成功！";
-            return Json(ajaxMsg, JsonRequestBehavior.AllowGet);
-        }
     }
 }

@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\scriptZxDB.sql" />
+    <Content Include="Content\css\homecss.css" />
     <Content Include="Content\css\logincss.css" />
     <Content Include="Content\image\login_ico.png" />
     <Content Include="Content\js\Jquery.Easyui\changelog.txt" />
@@ -455,6 +456,7 @@
     <Content Include="Content\js\Jquery.Easyui\themes\icons\sum.png" />
     <Content Include="Content\js\Jquery.Easyui\themes\icons\tip.png" />
     <Content Include="Content\js\Jquery.Easyui\themes\icons\undo.png" />
+    <Content Include="Content\js\Jquery\commjs.js" />
     <Content Include="Content\js\Jquery\initUserjs.js" />
     <Content Include="Content\js\Jquery\jquery-1.7.2.min.js" />
     <Content Include="Content\js\Jquery\loginjs.js" />
@@ -465,6 +467,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -474,9 +477,7 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\User\Login.cshtml" />
     <Content Include="Content\js\Jquery.Easyui\demo\accordion\datagrid_data1.json" />
     <Content Include="Content\js\Jquery.Easyui\demo\combobox\combobox_data1.json" />
     <Content Include="Content\js\Jquery.Easyui\demo\combobox\combobox_data2.json" />
@@ -499,6 +500,12 @@
     <Content Include="Content\js\Jquery.Easyui\demo\treegrid\treegrid_data3.json" />
     <Content Include="Content\js\Jquery.Easyui\demo\tree\tree_data1.json" />
     <Content Include="Content\js\Jquery.Easyui\demo\tree\tree_data2.json" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LayoutPartial.cshtml" />
+    <Content Include="Views\Shared\_LayoutTopPartial.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\noSessionExprise.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

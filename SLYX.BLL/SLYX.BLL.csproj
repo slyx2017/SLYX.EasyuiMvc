@@ -46,9 +46,14 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="ExtentionBLL\UserBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SLYX.Common\SLYX.Common.csproj">
+      <Project>{922fceb4-0de2-46c4-975c-e82285016870}</Project>
+      <Name>SLYX.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SLYX.DAL\SLYX.DAL.csproj">
       <Project>{44751587-a6d3-4ac8-b14a-55cf04ec47ce}</Project>
       <Name>SLYX.DAL</Name>

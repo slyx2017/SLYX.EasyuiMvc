@@ -11,23 +11,23 @@ namespace SLYX.EasyuiMvc.Controllers
     /// </summary>
     public class BaseController : Controller
     {
-        //当前登录的用户属性
-        public User CurrentUserInfo
-        {
-            get;
-            set;
-        }
         //重新基类在Action执行之前的事情,在Action执行之前的一个方法
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            base.OnActionExecuting(filterContext);
-            //得到用户登录的信息
-            CurrentUserInfo = Session["UserInfo"] as User;
             //判断用户是否为空
-            if (CurrentUserInfo == null)
+            if (!checkLogin())
             {
-                Response.Redirect("/User/Login");
+                filterContext.Result = RedirectToRoute("Default",new { Controller = "Login", Action = "noSessionExprise" });
             }
+            base.OnActionExecuting(filterContext);
+        }
+        protected bool checkLogin()
+        {
+            if (Session["ainfo"]==null)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

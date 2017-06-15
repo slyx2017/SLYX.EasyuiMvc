@@ -58,6 +58,12 @@ body{
 	position: relative;
 	border: rgba(255,255,255,0.2) 2px solid !important;
 }
+.input_outercode{
+    width:150px;
+	height: 25px;
+	border-radius: 50px;
+	border: rgba(255,255,255,0.2) 2px solid !important;
+}
 .u_user{
 	width: 25px;
 	height: 25px;

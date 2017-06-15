@@ -11,9 +11,6 @@ string namespaceName = code.VsNamespaceSuggestion();
 EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileManager.Create(this);
 #>
 using System;
-using SLYX.Model;
-using SLYX.IBLL;
-using SLYX.DAL;
 namespace SLYX.BLL
 {
 
@@ -24,7 +21,7 @@ namespace SLYX.BLL
     foreach(EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e=>e.Name))
 
     { #>
-        public partial class <#=entity.Name#>BLL : BaseBLL<<#=entity.Name#>>, I<#=entity.Name#>BLL
+        public partial class <#=entity.Name#>BLL : BaseBLL<Model.<#=entity.Name#>>, IBLL.I<#=entity.Name#>BLL
 		{
 		    public override void SetCurrentRepository()
 			{

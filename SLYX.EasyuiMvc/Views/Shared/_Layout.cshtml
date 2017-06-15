@@ -1,8 +1,5 @@
-﻿
-@{
-    Layout = null;
+﻿<!DOCTYPE html>
 
-}
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -15,23 +12,14 @@
 </head>
 <body class="easyui-layout">
     <div data-options="region:'north',border:false" style="height:40px;">@Html.Partial("_LayoutTopPartial")</div>
-    <div data-options="region:'west',split:true,title:'功能导航'" style="width:200px;">
-        <div id="menu" class="easyui-accordion">
-        </div>
+    <div data-options="region:'west',split:true,title:'West'" style="width:200px;padding:10px;">@Html.Partial("_LayoutPartial")</div>
+    <div data-options="region:'south',border:false" style="height:50px;background:#A9FACD;padding:10px;">south region</div>
+    <div data-options="region:'center',title:'Center'">
+        @RenderBody()
     </div>
-    <div data-options="region:'south',border:false" style="height:50px;padding:10px;">south region</div>
-    <div data-options="region:'center'">
-        <div id="tabs" class="easyui-tabs" data-options="tools:'#tab-tools',fit:true,border:false">
-            <div id="home" title="我的主页" data-options="iconCls:'icon-house',closable:false">
-                This is the Home content.
-            </div>
-        </div>
-    </div>
-    @Html.Partial("_LayoutPartial")
     <script src="~/Content/js/Jquery.Easyui/jquery.min.js"></script>
     <script src="~/Content/js/Jquery.Easyui/jquery.easyui.min.js"></script>
     <script src="~/Content/js/Jquery.Easyui/locale/easyui-lang-zh_CN.js"></script>
     <script src="~/Content/js/Jquery/commjs.js"></script>
 </body>
 </html>
-

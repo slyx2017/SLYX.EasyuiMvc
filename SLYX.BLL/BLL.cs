@@ -1,12 +1,9 @@
 ﻿
 using System;
-using SLYX.Model;
-using SLYX.IBLL;
-using SLYX.DAL;
 namespace SLYX.BLL
 {
 
-        public partial class ArticleBLL : BaseBLL<Article>, IArticleBLL
+        public partial class ArticleBLL : BaseBLL<Model.Article>, IBLL.IArticleBLL
 		{
 		    public override void SetCurrentRepository()
 			{
@@ -14,7 +11,7 @@ namespace SLYX.BLL
 				CurrentRepository = _dbSession.ArticleDAL;
 			}
 		}
-        public partial class ButtonBLL : BaseBLL<Button>, IButtonBLL
+        public partial class ButtonBLL : BaseBLL<Model.Button>, IBLL.IButtonBLL
 		{
 		    public override void SetCurrentRepository()
 			{
@@ -22,7 +19,7 @@ namespace SLYX.BLL
 				CurrentRepository = _dbSession.ButtonDAL;
 			}
 		}
-        public partial class DataTypeBLL : BaseBLL<DataType>, IDataTypeBLL
+        public partial class DataTypeBLL : BaseBLL<Model.DataType>, IBLL.IDataTypeBLL
 		{
 		    public override void SetCurrentRepository()
 			{
@@ -30,7 +27,7 @@ namespace SLYX.BLL
 				CurrentRepository = _dbSession.DataTypeDAL;
 			}
 		}
-        public partial class DepartmentBLL : BaseBLL<Department>, IDepartmentBLL
+        public partial class DepartmentBLL : BaseBLL<Model.Department>, IBLL.IDepartmentBLL
 		{
 		    public override void SetCurrentRepository()
 			{
@@ -38,7 +35,7 @@ namespace SLYX.BLL
 				CurrentRepository = _dbSession.DepartmentDAL;
 			}
 		}
-        public partial class FieldsBLL : BaseBLL<Fields>, IFieldsBLL
+        public partial class FieldsBLL : BaseBLL<Model.Fields>, IBLL.IFieldsBLL
 		{
 		    public override void SetCurrentRepository()
 			{
@@ -46,7 +43,7 @@ namespace SLYX.BLL
 				CurrentRepository = _dbSession.FieldsDAL;
 			}
 		}
-        public partial class HtmlTypeBLL : BaseBLL<HtmlType>, IHtmlTypeBLL
+        public partial class HtmlTypeBLL : BaseBLL<Model.HtmlType>, IBLL.IHtmlTypeBLL
 		{
 		    public override void SetCurrentRepository()
 			{
@@ -54,7 +51,7 @@ namespace SLYX.BLL
 				CurrentRepository = _dbSession.HtmlTypeDAL;
 			}
 		}
-        public partial class IconsBLL : BaseBLL<Icons>, IIconsBLL
+        public partial class IconsBLL : BaseBLL<Model.Icons>, IBLL.IIconsBLL
 		{
 		    public override void SetCurrentRepository()
 			{
@@ -62,7 +59,7 @@ namespace SLYX.BLL
 				CurrentRepository = _dbSession.IconsDAL;
 			}
 		}
-        public partial class MenuBLL : BaseBLL<Menu>, IMenuBLL
+        public partial class MenuBLL : BaseBLL<Model.Menu>, IBLL.IMenuBLL
 		{
 		    public override void SetCurrentRepository()
 			{
@@ -70,7 +67,7 @@ namespace SLYX.BLL
 				CurrentRepository = _dbSession.MenuDAL;
 			}
 		}
-        public partial class MenuButtonBLL : BaseBLL<MenuButton>, IMenuButtonBLL
+        public partial class MenuButtonBLL : BaseBLL<Model.MenuButton>, IBLL.IMenuButtonBLL
 		{
 		    public override void SetCurrentRepository()
 			{
@@ -78,7 +75,7 @@ namespace SLYX.BLL
 				CurrentRepository = _dbSession.MenuButtonDAL;
 			}
 		}
-        public partial class NewsBLL : BaseBLL<News>, INewsBLL
+        public partial class NewsBLL : BaseBLL<Model.News>, IBLL.INewsBLL
 		{
 		    public override void SetCurrentRepository()
 			{
@@ -86,7 +83,7 @@ namespace SLYX.BLL
 				CurrentRepository = _dbSession.NewsDAL;
 			}
 		}
-        public partial class NewsTypeBLL : BaseBLL<NewsType>, INewsTypeBLL
+        public partial class NewsTypeBLL : BaseBLL<Model.NewsType>, IBLL.INewsTypeBLL
 		{
 		    public override void SetCurrentRepository()
 			{
@@ -94,7 +91,7 @@ namespace SLYX.BLL
 				CurrentRepository = _dbSession.NewsTypeDAL;
 			}
 		}
-        public partial class RequestionBLL : BaseBLL<Requestion>, IRequestionBLL
+        public partial class RequestionBLL : BaseBLL<Model.Requestion>, IBLL.IRequestionBLL
 		{
 		    public override void SetCurrentRepository()
 			{
@@ -102,7 +99,7 @@ namespace SLYX.BLL
 				CurrentRepository = _dbSession.RequestionDAL;
 			}
 		}
-        public partial class RequestionTypeBLL : BaseBLL<RequestionType>, IRequestionTypeBLL
+        public partial class RequestionTypeBLL : BaseBLL<Model.RequestionType>, IBLL.IRequestionTypeBLL
 		{
 		    public override void SetCurrentRepository()
 			{
@@ -110,7 +107,7 @@ namespace SLYX.BLL
 				CurrentRepository = _dbSession.RequestionTypeDAL;
 			}
 		}
-        public partial class RoleBLL : BaseBLL<Role>, IRoleBLL
+        public partial class RoleBLL : BaseBLL<Model.Role>, IBLL.IRoleBLL
 		{
 		    public override void SetCurrentRepository()
 			{
@@ -118,7 +115,7 @@ namespace SLYX.BLL
 				CurrentRepository = _dbSession.RoleDAL;
 			}
 		}
-        public partial class RoleMenuBLL : BaseBLL<RoleMenu>, IRoleMenuBLL
+        public partial class RoleMenuBLL : BaseBLL<Model.RoleMenu>, IBLL.IRoleMenuBLL
 		{
 		    public override void SetCurrentRepository()
 			{
@@ -126,7 +123,7 @@ namespace SLYX.BLL
 				CurrentRepository = _dbSession.RoleMenuDAL;
 			}
 		}
-        public partial class RoleMenuButtonBLL : BaseBLL<RoleMenuButton>, IRoleMenuButtonBLL
+        public partial class RoleMenuButtonBLL : BaseBLL<Model.RoleMenuButton>, IBLL.IRoleMenuButtonBLL
 		{
 		    public override void SetCurrentRepository()
 			{
@@ -134,7 +131,7 @@ namespace SLYX.BLL
 				CurrentRepository = _dbSession.RoleMenuButtonDAL;
 			}
 		}
-        public partial class TableBLL : BaseBLL<Table>, ITableBLL
+        public partial class TableBLL : BaseBLL<Model.Table>, IBLL.ITableBLL
 		{
 		    public override void SetCurrentRepository()
 			{
@@ -142,7 +139,7 @@ namespace SLYX.BLL
 				CurrentRepository = _dbSession.TableDAL;
 			}
 		}
-        public partial class UserBLL : BaseBLL<User>, IUserBLL
+        public partial class UserBLL : BaseBLL<Model.User>, IBLL.IUserBLL
 		{
 		    public override void SetCurrentRepository()
 			{
@@ -150,7 +147,7 @@ namespace SLYX.BLL
 				CurrentRepository = _dbSession.UserDAL;
 			}
 		}
-        public partial class UserDepartmentBLL : BaseBLL<UserDepartment>, IUserDepartmentBLL
+        public partial class UserDepartmentBLL : BaseBLL<Model.UserDepartment>, IBLL.IUserDepartmentBLL
 		{
 		    public override void SetCurrentRepository()
 			{

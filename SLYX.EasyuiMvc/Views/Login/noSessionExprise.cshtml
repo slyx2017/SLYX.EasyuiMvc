@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>noSessionExprise</title>
+    <script type="text/javascript">
+    function reLogin()
+    {
+        var url = "/Login/Login";
+        self.top.location.replace(url);
+        return false;
+    }
+    </script>
+</head>
+<body>
+    <form id="form1">
+        <div>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td style="height:200px">
+                        &nbsp;&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <div>非常抱歉, 由于闲置时间过长, 页面自动过期, 请重新登录后再继续操作!</div>
+                        <br /><div>(Sorry, Your login session has expired. Please re-login!)</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center"><a href="javascript:void(0)" class="easyui-linkbutton" onclick="return reLogin();">重新登陆//re-login</a></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>
