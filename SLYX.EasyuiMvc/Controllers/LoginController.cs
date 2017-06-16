@@ -25,8 +25,8 @@ namespace SLYX.EasyuiMvc.Controllers
         public ActionResult CheckCode()
         {
             ValidateCode validateCode = new ValidateCode();//首先实例化验证码的类
-            string code = validateCode.CreateValidateCode(5);//生成验证码指定的长度
-            Session["ValidateCode"] = code;//将验证码赋值给Session变量
+            string code = validateCode.CreateValidateCode(4);//生成验证码指定的长度
+            Session["vcode"] = code;//将验证码赋值给Session变量
             byte[] bytes = validateCode.CreateValidateGraphic(code);//创建验证码的图片
             return File(bytes, @"image/png");//最后将验证码返回
         }
@@ -43,9 +43,14 @@ namespace SLYX.EasyuiMvc.Controllers
             //1.1 获取数据
             string strName = Request.Params["UserName"];
             string strPwd = Request.Params["Password"];
+            string vcode = Request.Params["VCode"];
             bool isAllway=bool.Parse(Request.Params["isAllway"]);
             //1.2 验证
-
+            if (vcode!=Session["vcode"].ToString().ToLower())
+            {
+                ajaxM.Msg = "登录失败，验证码不正确！";
+                return Json(ajaxM);
+            }
             // 1.3 通过操作上下文获取 用户业务接口对象 ，调用里面的登录方法!
             User usr = _userBLL.Login(strName, strPwd);
             if (usr != null)

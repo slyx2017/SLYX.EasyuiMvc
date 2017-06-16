@@ -9,46 +9,49 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
-    <link href="~/Content/js/Jquery.Easyui/themes/default/easyui.css" rel="stylesheet" />
-    <link href="~/Content/js/Jquery.Easyui/themes/icon.css" rel="stylesheet" />
-    <link href="~/Content/css/logincss.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/dome.css" rel="stylesheet" />
     <style type="text/css">
-        #errMsg{
-            color:#BF2529;
-            font-weight:bold;
+        #errMsg {
+            color: #E21B1A;
+            font-weight: bold;
         }
     </style>
 </head>
 <body onkeydown="KeyLogin()">
-    <div class="logo_box">
-        <h3>某某公司欢迎你</h3>
-        <form id="ff" action="#" name="f" method="post">
-            <div class="input_outer">
-                <span class="u_user"></span>
-                <label class="l-login login_username" style="color: rgb(255, 255, 255); display: block;">输入ID或用户名登录</label>
-                <input id="UserName" name="logname" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;" onfocus="$('.login_username').hide();" onblur="if (this.value == '') $('.login_username').show()" value="" type="text">
-            </div>
-            <div class="input_outer">
-                <span class="us_uer"></span>
-                <label class="l-login login_password" style="color: rgb(255, 255, 255); display: block;">输入密码</label>
-                <input id="Password" name="logpass" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;" onfocus="$('.login_password').hide()" onblur="if(this.value=='') $('.login_password').show()" value="" type="password">
-            </div>
+    <div class="box">
+        <div class="cnt">
+            <p id="huanying"><span id="cnt_one">欢迎登录</span></p>
+            <hr>
             <div>
-                <input id="VCode" name="logcode" class="text" style="width: 50px;"  value="" type="text"/>
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group">
+                        <span class="input-group-addon"><img src="~/Content/image/user.png"></span>
+                        <input type="text" id="UserName" name="UserName" class="form-control" placeholder="请输入您的账号">
+                    </div><br>
+                    <div class="input-group">
+                        <span class="input-group-addon"><img src="~/Content/image/suo.png"></span>
+                        <input type="text" id="Password" name="Password" class="form-control" placeholder="请输入您的密码">
+                    </div><br>
+                    <div class="input-group" style="position:absolute;">
+                        <input type="text" id="VCode" name="VCode" class="form-control" placeholder="请输入验证码" style="position:relative;width:150px;height:33px;">
+                        <img src="/Login/CheckCode?" alt="刷新验证码！" id="codeImg" onclick="ClickRemoveChangeCode()"><a href="javascript:void(0);" onclick="ClickRemoveChangeCode()">看不清？</a>
+                    </div><br><br>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="isAllway" name="isAllway"> 记住密码
+                        </label>
+                    </div>
+                    <div id="errMsg"></div>
+                </form>
             </div>
-            <div>
-            <img id="codeImg" alt="刷新验证码！" style=margin-bottom: -8px;cursor pointer;position absolute;right 0px;left 170px;" src="/Login/CheckCode?ID=1" onclick="ClickRemoveChangeCode()" />
-<a href="javascript:void(0);" onclick="ClickRemoveChangeCode()">看不清？</a>
+            <div style="margin-top:20px;">
+                <input class="form-control btn btn-info" type="button" value="登录" onclick="Login()">
             </div>
-            <div class="mb2"><a class="act-but submit" href="javascript:void(0);" style="color: #FFFFFF" onclick="Login()">登录</a></div>
-            <div id="errMsg"></div>
-            <div class="checkbox-div"><input name="check-box" id="check-box" class="checkbox" type="checkbox" value="1"><label id="checkbox-label" for="check-box">记住密码</label></div>
-        </form>
-        <a href="#" class="login-fgetpwd" style="color: #FFFFFF">忘记密码？</a>
+        </div>
     </div>
-    <script src="~/Content/js/Jquery.Easyui/jquery.min.js"></script>
-    <script src="~/Content/js/Jquery.Easyui/jquery.easyui.min.js"></script>
-    <script src="~/Content/js/Jquery.Easyui/locale/easyui-lang-zh_CN.js"></script>
-    <script src="~/Content/js/Jquery/loginjs.js"></script>
+    <script src="~/Content/Jquery/jquery.min.js"></script>
+    <script src="~/Content/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="~/Content/Jquery/loginjs.js"></script>
 </body>
 </html>
