@@ -1,21 +1,52 @@
-﻿
+﻿@model SLYX.Model.User
 @{
-    Layout = null;
+    ViewBag.Title = "用户列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="grid-users"></div>
+
+<div id="dlg" class="easyui-dialog" title="编辑用户信息" data-options="iconCls:'icon-save',closed:true,buttons: '#dlg-buttons'" style="width:500px;height:400px;padding:10px"> 
+        <form id="ff" method="post">
+            <input id="hideId" name="hideId" style="display:none;">
+            <div style="margin-bottom:20px">
+                <input class="easyui-textbox" id="AccountName" name="AccountName"  style="width:80%" data-options="label:'账号:',required:true">
+            </div>
+            <div style="margin-bottom:20px">
+                <input class="easyui-textbox" id="RealName" name="RealName" style="width:80%" data-options="label:'昵称:',required:true">
+            </div>
+            <div style="margin-bottom:20px">
+                <input class="easyui-textbox" id="MobilePhone" name="MobilePhone" style="width:80%" data-options="label:'手机:',required:true">
+            </div>
+            <div style="margin-bottom:20px">
+                <input class="easyui-textbox"  id="Email" name="Email" style="width:80%;"  data-options="label:'邮箱:',required:true,validType:'email'">
+            </div>
+            <div style="margin-bottom:20px">
+                <select class="easyui-combobox" id="IsAble" name="IsAble" data-options="label:'是否启用:',required:true,editable:false" style="width:80%"><option value="1">是</option><option value="0">否</option></select>
+            </div>
+        </form>
+</div>
+<div id="dlg-buttons">
+    <a href="javascript:void(0)" class="easyui-linkbutton">提交</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:$('#dlg').dialog('close')">关闭</a>
+</div>
+
+<div id="dlgp" class="easyui-dialog" title="编辑角色" data-options="iconCls:'icon-save',closed:true,buttons: '#dlgp-buttons'" style="width:500px;height:400px;padding:10px">
+    <form id="ffp" method="post">
+        <input id="userId" name="userId" style="display:none;">
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" id="UserName" name="UserName" style="width:80%" data-options="label:'账号:',required:true,editable:false">
+        </div>
+        <div style="margin-bottom:20px">
+            <input class="easyui-combobox" id="sel_Permiss" name="sel_Permiss" style="width:80%;">
+        </div>
+    </form>
+</div>
+<div id="dlgp-buttons">
+    <a href="javascript:void(0)" class="easyui-linkbutton">提交</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:$('#dlgp').dialog('close')">关闭</a>
+</div>
+@section footer{
+<script src="~/Content/Jquery/initUserjs.js"></script>
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link href="~/Content/js/Jquery.Easyui/themes/default/easyui.css" rel="stylesheet" />
-    <link href="~/Content/js/Jquery.Easyui/themes/icon.css" rel="stylesheet" />
-</head>
-<body>
-    <div id="ui_user_dg" class="easyui-datagrid"> 
-    </div>
-    <script src="~/Content/js/Jquery.Easyui/jquery.min.js"></script>
-    <script src="~/Content/js/Jquery.Easyui/jquery.easyui.min.js"></script>
-</body>
-</html>

@@ -6,4 +6,11 @@
     background-color: #0295FF;
     border-color: #0295FF;
 }
+.tree .tree-node {
+    height:22px;
+    padding-top:3px;
+}
+.tree li {
+    height: 25px;
+}
 

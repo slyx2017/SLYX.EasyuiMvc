@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SLYX.EasyuiMvc.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,8 @@ namespace SLYX.EasyuiMvc
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            AutofacConfig.Register();
         }
     }
 }

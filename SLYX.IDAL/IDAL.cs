@@ -78,7 +78,15 @@ namespace SLYX.IDAL
 		{
 
 		}
+        public partial interface IUser_Role_DeptViewDAL : IBaseDAL<User_Role_DeptView>
+		{
+
+		}
         public partial interface IUserDepartmentDAL : IBaseDAL<UserDepartment>
+		{
+
+		}
+        public partial interface IUserRoleDAL : IBaseDAL<UserRole>
 		{
 
 		}

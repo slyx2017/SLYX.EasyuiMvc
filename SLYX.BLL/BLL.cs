@@ -147,12 +147,28 @@ namespace SLYX.BLL
 				CurrentRepository = _dbSession.UserDAL;
 			}
 		}
+        public partial class User_Role_DeptViewBLL : BaseBLL<Model.User_Role_DeptView>, IBLL.IUser_Role_DeptViewBLL
+		{
+		    public override void SetCurrentRepository()
+			{
+				//设置当前仓储为User_Role_DeptView仓储
+				CurrentRepository = _dbSession.User_Role_DeptViewDAL;
+			}
+		}
         public partial class UserDepartmentBLL : BaseBLL<Model.UserDepartment>, IBLL.IUserDepartmentBLL
 		{
 		    public override void SetCurrentRepository()
 			{
 				//设置当前仓储为UserDepartment仓储
 				CurrentRepository = _dbSession.UserDepartmentDAL;
+			}
+		}
+        public partial class UserRoleBLL : BaseBLL<Model.UserRole>, IBLL.IUserRoleBLL
+		{
+		    public override void SetCurrentRepository()
+			{
+				//设置当前仓储为UserRole仓储
+				CurrentRepository = _dbSession.UserRoleDAL;
 			}
 		}
 

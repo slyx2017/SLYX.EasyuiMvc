@@ -12,15 +12,9 @@ namespace SLYX.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class UserRole
     {
-        public int Id { get; set; }
-        public string RoleName { get; set; }
-        public string Description { get; set; }
-        public string CreateBy { get; set; }
-        public Nullable<System.DateTime> CreateTime { get; set; }
-        public string UpdateBy { get; set; }
-        public Nullable<System.DateTime> UpdateTime { get; set; }
-        public Nullable<bool> IsAble { get; set; }
+        public int UserId { get; set; }
+        public Nullable<int> RoleId { get; set; }
     }
 }

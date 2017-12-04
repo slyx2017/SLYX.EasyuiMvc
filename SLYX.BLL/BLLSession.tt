@@ -10,15 +10,13 @@ EdmItemCollection ItemCollection = loader.CreateEdmItemCollection(inputFile);
 string namespaceName = code.VsNamespaceSuggestion();
 EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileManager.Create(this);
 #>
-using System.Data.Objects;
+using System;
 using SLYX.Model;
-using System.Data.Common;
-namespace SLYX.IDAL
+using SLYX.IBLL;
+namespace SLYX.BLL
 {
-
-    //在这里需要一个for循环来遍历数据库中所有的表放置在下面即可，这样就实现了所有的表对应的仓储显示出来了。
-		public interface IDBSession
-		{
+    public class BLLSession:IBLLSession
+	{
 <#
 
     //使用foreach循环遍历ItemCollection.GetItems<EntityType>集合
@@ -26,8 +24,12 @@ namespace SLYX.IDAL
     foreach(EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e=>e.Name))
 
     { #>
-		    I<#=entity.Name#>DAL <#=entity.Name#>DAL{get;}
-<#}#>
-            int SaveChanges();
-        }
+
+		public I<#=entity.Name#>BLL <#=entity.Name#>BLL
+		{
+			get { return new <#=entity.Name#>BLL(); }
+		}
+
+   <#}#>
+     }
 }

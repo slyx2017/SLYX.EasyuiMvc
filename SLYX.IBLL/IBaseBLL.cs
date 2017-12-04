@@ -9,11 +9,14 @@ namespace SLYX.IBLL
     public partial interface IBaseBLL<T> where T : class, new()
     {
         // 实现对数据库的添加功能,添加实现EF框架的引用
-        T AddEntity(T entity);
+        int AddEntity(T entity);
         //实现对数据库的修改功能
         bool UpdateEntity(T entity);
         //实现对数据库的删除功能
         bool DeleteEntity(T entity);
+        bool RemoveRange(List<T> entity);
+        bool RemoveRange(Expression<Func<T, bool>> whereLambda);
+        T Find(object key);
         //实现对数据库的查询  --简单查询
         IQueryable<T> LoadEntities(Expression<Func<T, bool>> whereLambda);
         /// <summary>

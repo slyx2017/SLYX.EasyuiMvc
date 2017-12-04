@@ -26,8 +26,9 @@ namespace SLYX.IDAL
 		    IRoleMenuButtonDAL RoleMenuButtonDAL{get;}
 		    ITableDAL TableDAL{get;}
 		    IUserDAL UserDAL{get;}
+		    IUser_Role_DeptViewDAL User_Role_DeptViewDAL{get;}
 		    IUserDepartmentDAL UserDepartmentDAL{get;}
+		    IUserRoleDAL UserRoleDAL{get;}
             int SaveChanges();
-		    int ExcuteSql(string strSql, DbParameter[] parameters);
         }
 }

@@ -25,10 +25,6 @@ changeTheme = function (themeName) {
     });
 };
 
-function createFrame(url) {
-    var s = '<iframe frameborder="0" scrolling="auto" src="' + url + '" style="width:100%;height:100%;"></iframe>';
-    return s;
-}
 //在右边center区域打开菜单，新增tab  
 function Open(text, url) {
     if ($("#tabs").tabs('exists', text)) {
@@ -53,28 +49,27 @@ function createAccrodion() {
     });
     //获取第一层初始目录 
     $.ajax({
-        type: "post",
+        type: "get",
         url: "/Home/InitMenu",
         data: { "pid": "0" },
         success: function (data) {
             $.each(data, function (i, e) {
+                var id = e.id;
+                var text = e.text;
                 if (i == 0) {
-                    var id = e.id;
                     $('#menu').accordion('add', {
-                        id: e.id,
                         title: e.text,
                         iconCls: e.iconCls,
                         selected: true,
-                        content: '<ul id="' + e.id + '" name="' + e.text + '"></ul>'
+                        content: '<ul id="' + id + '" name="' + text + '"></ul>'
                     });
                 }
                 else {
                     $('#menu').accordion('add', {
-                        id: e.id,
                         title: e.text,
                         iconCls: e.iconCls,
                         selected: false,
-                        content: '<ul id="' + e.id + '" name="' + e.text + '"></ul>'
+                        content: '<ul id="' + id + '" name="' + text + '"></ul>'
                     });
                 }
             });
@@ -85,7 +80,7 @@ function createAccrodion() {
         animate: true,
         onSelect: function (title, index) {
             var $childNode = $(this).children()[index];
-            var id=$childNode.lastChild.id;
+            var id = $childNode.lastChild.children[0].id;
             $("ul[name='" + title + "']").tree({
                 url: '/Home/InitMenu',
                 queryParams: {
@@ -118,7 +113,10 @@ function addTab(subtitle, url, icon) {
     }
     tabClose();
 }
-
+function createFrame(url) {
+    var s = '<iframe frameborder="0" scrolling="auto" src="' + url + '" style="width:100%;height:99%;"></iframe>';
+    return s;
+}
 function tabClose() {
     /*双击关闭TAB选项卡*/
     $(".tabs-inner").dblclick(function () {
@@ -264,31 +262,21 @@ function maskInit() {
 }
 function globalShade() {
     //获取页面的高度和宽度  
-
     if (window.parent.document.getElementById('mask')) {
-
         window.parent.document.getElementById('mask').style.display = "block";
-
     }
     if (document.getElementById("maskIframe")) {
         document.getElementById("maskIframe").style.display = "block";
-
-
     }
-
-
 };
 function deleteGlobalShade() {
     if (window.parent.document.getElementById('mask')) {
         window.parent.document.getElementById('mask').style.display = "none";
-
     }
     if (document.getElementById("maskIframe")) {
 
         document.getElementById("maskIframe").style.display = "none";
-
     }
-
 };
 
 /*
@@ -297,7 +285,6 @@ function deleteGlobalShade() {
  */
 function addClear4TextBox(theId, onChangeFun) {
     var theObj = $(theId);
-
     //根据当前值，确定是否显示清除图标
     var showIcon = function () {
         var icon = theObj.textbox('getIcon', 0);
@@ -307,7 +294,6 @@ function addClear4TextBox(theId, onChangeFun) {
             icon.css('visibility', 'hidden');
         }
     };
-
     theObj.textbox({
         //添加清除图标
         icons: [{
@@ -324,7 +310,6 @@ function addClear4TextBox(theId, onChangeFun) {
             }
             showIcon();
         }
-
     });
 
     //根据目前值，确定是否显示清除图标
@@ -337,7 +322,6 @@ function addClear4TextBox(theId, onChangeFun) {
  */
 function addClear4Combobox(theId, onChangeFun) {
     var theObj = $(theId);
-
     //根据当前值，确定是否显示清除图标
     var showIcon = function () {
         var icon = theObj.combobox('getIcon', 0);
@@ -364,9 +348,7 @@ function addClear4Combobox(theId, onChangeFun) {
             }
             showIcon();
         }
-
     });
-
     //初始化确认图标显示
     showIcon();
 }
@@ -405,7 +387,6 @@ function addClear4Combogrid(theId, onChangeFun) {
             }
             showIcon();
         }
-
     });
 
     //初始化确认图标显示
@@ -418,7 +399,6 @@ function addClear4Combogrid(theId, onChangeFun) {
  */
 function addClear4Numberbox(theId, onChangeFun) {
     var theObj = $(theId);
-
     //根据当前值，确定是否显示清除图标
     var showIcon = function () {
         var icon = theObj.numberbox('getIcon', 0);
@@ -428,7 +408,6 @@ function addClear4Numberbox(theId, onChangeFun) {
             icon.css('visibility', 'hidden');
         }
     };
-
     theObj.numberbox({
         //添加清除图标
         icons: [{
@@ -437,7 +416,6 @@ function addClear4Numberbox(theId, onChangeFun) {
                 theObj.numberbox('clear');
             }
         }],
-
         //值改变时，根据值，确定是否显示清除图标
         onChange: function () {
             if (onChangeFun) {
@@ -445,9 +423,7 @@ function addClear4Numberbox(theId, onChangeFun) {
             }
             showIcon();
         }
-
     });
-
     //初始化确认图标显示
     showIcon();
 }
@@ -458,7 +434,6 @@ function addClear4Numberbox(theId, onChangeFun) {
  */
 function addClear4Datebox(theId, onChangeFun) {
     var theObj = $(theId);
-
     //根据当前值，确定是否显示清除图标
     var showIcon = function () {
         var icon = theObj.datebox('getIcon', 0);
@@ -485,9 +460,7 @@ function addClear4Datebox(theId, onChangeFun) {
             }
             showIcon();
         }
-
     });
-
     //初始化确认图标显示
     showIcon();
 }
@@ -526,9 +499,7 @@ function addClear4Datetimebox(theId, onChangeFun) {
             }
             showIcon();
         }
-
     });
-
     //初始化确认图标显示
     showIcon();
 }
@@ -569,7 +540,6 @@ function ChangePwd(changetype) {
         titles = "首次登陆必须重置密码";
         outText = "退 出";
     }
-
     $("<div/>").dialog({
         id: "ui_user_userchangepwd_dialog",
         href: "/User/ChangePwd",
@@ -661,6 +631,7 @@ function LoginOut() {
         }
     })
 }
+
 //日期格式正确显示
 function formatDatebox(value) {
     if (value == null || value == '') {

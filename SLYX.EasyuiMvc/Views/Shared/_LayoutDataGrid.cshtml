@@ -1,0 +1,118 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string toolbarItem = ViewBag.ToolbarItem ?? "add,edit,save,cancel,delete";
+}
+
+@section footer{
+@RenderBody()
+@RenderSection("headHtml", false)
+<div id="grid-@ViewBag.GridId"></div>
+@RenderSection("footHtml", false)
+    <script type="text/javascript">
+        var rownumbers = true, singleSelect = false, pageSize = 25;
+        var grid, editIndex = undefined, frozenColumns = [[]], columns = [[]];
+
+        var startfunction = function () { };
+        var endfunction = function () {
+        };
+        var addObject = function () {
+            return {};
+        };
+        var replaceSearchField = function (field) {
+            return field;
+        };
+    </script>
+    @RenderSection("paramInit", false)
+    <script type="text/javascript">
+         var addNewRow = function () {
+             $('#dlg').dialog('open');
+         };
+        
+         var beginEdit = function () {
+         };
+        var deleteRows = function () {
+            var selectRows = grid.datagrid("getSelections");
+            if (selectRows.length == 0) {
+                $.messager.alert("系统提示","请先选中要删除的行。","warning");
+                return;
+            }
+            var ids="";
+            $.each(selectRows, function (index,value) {
+                ids += selectRows[index].ID + ",";
+            })
+           ids= ids.substring(0, ids.length-1);
+           $.messager.confirm("系统提示", "是否要删除所有选中的行？此操作是不可恢复的。", function (rt) {
+               if (rt) {
+                   $.post("@ViewBag.DeleteUrl", { ids: ids }, ajaxResultHandler);
+               } else {
+                   return;
+               }
+            });
+        };
+
+        function ajaxResultHandler(data) {
+            if (data.Statu == "ok") {
+                grid.datagrid("reload");
+            }
+            if (data.Statu == "err") {
+                $.messager.alert("系统提示", data.Msg, "warning");
+            } else {
+                $.messager.alert("系统提示", data.Msg, "warning");
+            }
+        }
+        var toolbarData = [
+            @if (toolbarItem.Contains("add"))
+            {
+                @:{ text: "增加", iconCls: "icon-add",handler:addNewRow},
+            }
+            @if (toolbarItem.Contains("edit"))
+            {
+                <text>
+            { text: "编辑", iconCls: "icon-edit", handler: beginEdit },
+            "-",
+            </text>
+            }
+            @if (toolbarItem.Contains("save"))
+            {
+                @:{ text: "保存", iconCls: "icon-save" },
+            }
+            @if (toolbarItem.Contains("cancel"))
+            {
+                <text>
+            { text: "取消", iconCls: "icon-undo" },
+            "-",
+            </text>
+            }
+            @if (toolbarItem.Contains("delete"))
+            {
+                @:{ text: "删除", iconCls: "icon-remove", handler: deleteRows },
+            }
+        ];
+    </script>
+    @RenderSection("customScript", true)
+    <script type="text/javascript">
+        $(function () {
+            //执行前置逻辑
+            startfunction();
+
+            grid = $("#grid-@ViewBag.GridId").datagrid({
+                title: "@ViewBag.Title",
+                fit: true,
+                frozenColumns: frozenColumns,
+                columns: columns,
+                fitColumns: true,
+                url: "@ViewBag.GridDataUrl",
+                loadMsg: "正在加载数据，请稍候",
+                toolbar: toolbarData,
+                rownumbers: rownumbers,
+                singleSelect: singleSelect,
+                pagination: true,
+                pageSize: pageSize,
+                pageList: [10, 25, 50, 100, 200]
+            });
+
+            //执行后置逻辑
+            endfunction();
+        });
+</script>
+}

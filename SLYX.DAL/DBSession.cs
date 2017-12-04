@@ -2,11 +2,9 @@
 using System;
 using SLYX.Model;
 using SLYX.IDAL;
-using System.Data.Common;
-
 namespace SLYX.DAL
 {
-    public class DBSession:IDBSession
+    public class DbSession:IDBSession
 	{
 
 		public IArticleDAL ArticleDAL
@@ -117,19 +115,26 @@ namespace SLYX.DAL
 		}
 		
 
+		public IUser_Role_DeptViewDAL User_Role_DeptViewDAL
+		{
+			get { return new User_Role_DeptViewDAL(); }
+		}
+		
+
 		public IUserDepartmentDAL UserDepartmentDAL
 		{
 			get { return new UserDepartmentDAL(); }
 		}
 		
+
+		public IUserRoleDAL UserRoleDAL
+		{
+			get { return new UserRoleDAL(); }
+		}
+		
         public int SaveChanges() 
 		{
-			return EFContextFactory.GetCurrentDbContext().SaveChanges();
+			return DAL.EFContextFactory.GetCurrentDbContext().SaveChanges();
 		}
-
-        public int ExcuteSql(string strSql, DbParameter[] parameters)
-        {
-            throw new NotImplementedException();
-        }
-    }
+}
 }

@@ -10,7 +10,11 @@ namespace SLYX.EasyuiMvc.Controllers
 {
     public class HomeController : BaseController
     {
-        private IMenuBLL _menuBLL = new MenuBLL();
+        private IMenuBLL _menuBLL;
+        public HomeController(IMenuBLL menubll)
+        {
+            _menuBLL = menubll;
+        }
         // GET: Home
         public ActionResult Index()
         {

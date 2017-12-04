@@ -21,7 +21,7 @@ namespace SLYX.DAL
             IDBSession _dbSession = CallContext.GetData("DbSession") as IDBSession;
             if (_dbSession == null)//线程在数据槽里面没有此上下文
             {
-                _dbSession = new DBSession();//如果不存在上下文的话，创建一个EF上下文
+                _dbSession = new DbSession();//如果不存在上下文的话，创建一个EF上下文
                 CallContext.SetData("DbContext", _dbSession);//我们在创建一个，放到数据槽中去
             }
             return _dbSession;

@@ -4,6 +4,7 @@ using SLYX.IDAL;
 using System.Linq.Expressions;
 using SLYX.DAL;
 using System.Reflection;
+using System.Collections.Generic;
 
 namespace SLYX.BLL
 {
@@ -20,24 +21,40 @@ namespace SLYX.BLL
         public abstract void SetCurrentRepository();
         //子类必须实现
         //实现对数据库的添加功能
-        public T AddEntity(T entity)
+        public int AddEntity(T entity)
         {
             //调用T对应的仓储来做添加工作
-            var AddEntity = CurrentRepository.AddEntity(entity);
-            _dbSession.SaveChanges();
-            return AddEntity;
+            int result=CurrentRepository.AddEntity(entity);
+            return result;
         }
         //实现对数据的修改功能
         public bool UpdateEntity(T entity)
         {
-            CurrentRepository.UpdateEntity(entity);
-            return _dbSession.SaveChanges() > 0;
+            return CurrentRepository.UpdateEntity(entity);
         }
         //实现对数据库的删除功能
         public bool DeleteEntity(T entity)
         {
-            CurrentRepository.DeleteEntity(entity);
-            return _dbSession.SaveChanges() > 0;
+            return CurrentRepository.DeleteEntity(entity);
+        }
+        //实现对数据库的批量删除功能
+        public bool RemoveRange(List<T> entities)
+        {
+            return CurrentRepository.RemoveRange(entities);
+        }
+        //实现对数据库的批量删除功能
+        public bool RemoveRange(Expression<Func<T, bool>> whereLambda)
+        {
+            return CurrentRepository.RemoveRange(whereLambda);
+        }
+        /// <summary>  
+        /// 查找带给定主键值的实体。 如果上下文中存在带给定主键值的实体，则立即返回该实体，而不会向存储区发送请求。 否则，会向存储区发送查找带给定主键值的实体的请求，如果找到该实体，则将其附加到上下文并返回。 如果未在上下文或存储区中找到实体，则返回 null。  
+        /// </summary>  
+        /// <param name="key"></param>  
+        /// <returns></returns>  
+        public T Find(object key)
+        {
+            return CurrentRepository.Find(key);
         }
         //实现对数据库的查询  --简单查询
         public IQueryable<T> LoadEntities(Expression<Func<T, bool>> whereLambda)

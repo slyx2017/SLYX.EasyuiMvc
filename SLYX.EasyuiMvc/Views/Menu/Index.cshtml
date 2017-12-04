@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "菜单列表";
+    Layout = "~/Views/Shared/_LayoutDataGrid.cshtml";
+    ViewBag.GridId = "menus";
+    ViewBag.GridDataUrl = Url.Action("MenuList");
+}
+
+@section customScript{
+    <script type="text/javascript">
+        var  columns = [[{title:'Id',field:'Id',align:'left',width:70,hidden:true},
+          {title:'菜单名',field:'Name',align:'left',width:70},
+          {title:'父节点',field:'ParentId',align:'left',width:70},
+          {title:'编码',field:'Code',align:'left',width:70},
+          {title:'路径',field:'LinkAddress',align:'left',width:70},
+          {title:'图标',field:'Icon',align:'left',width:70},
+          {title:'排序',field:'Sort',align:'left',width:70},
+          { title: '创建时间', field: 'CreateTime', align: 'left', width: 70, formatter: formatDatebox },
+          {title:'创建人',field:'CreateBy',align:'left',width:70},
+          { title: '更新时间', field: 'UpdateTime', align: 'left', width: 70, formatter: formatDatebox },
+          {title:'更新人',field:'UpdateBy',align:'left',width:70}
+        ]];
+    </script>
+}
+

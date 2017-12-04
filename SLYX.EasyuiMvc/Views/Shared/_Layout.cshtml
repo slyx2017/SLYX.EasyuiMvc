@@ -1,25 +1,25 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
 
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title - 我的EasyUI</title>
-    <link href="~/Content/js/Jquery.Easyui/themes/default/easyui.css" rel="stylesheet" />
-    <link href="~/Content/js/Jquery.Easyui/themes/icon.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Jquery.Easyui/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/Content/Jquery.Easyui/themes/icon.css" rel="stylesheet" />
     <link href="~/Content/css/homecss.css" rel="stylesheet" />
+    @RenderSection("header", false)
 </head>
-<body class="easyui-layout">
-    <div data-options="region:'north',border:false" style="height:40px;">@Html.Partial("_LayoutTopPartial")</div>
-    <div data-options="region:'west',split:true,title:'West'" style="width:200px;padding:10px;">@Html.Partial("_LayoutPartial")</div>
-    <div data-options="region:'south',border:false" style="height:50px;background:#A9FACD;padding:10px;">south region</div>
-    <div data-options="region:'center',title:'Center'">
-        @RenderBody()
-    </div>
-    <script src="~/Content/js/Jquery.Easyui/jquery.min.js"></script>
-    <script src="~/Content/js/Jquery.Easyui/jquery.easyui.min.js"></script>
-    <script src="~/Content/js/Jquery.Easyui/locale/easyui-lang-zh_CN.js"></script>
-    <script src="~/Content/js/Jquery/commjs.js"></script>
+<body>
+    @RenderBody()
+    <script src="~/Content/Jquery.Easyui/jquery.min.js"></script>
+    <script src="~/Content/Jquery.Easyui/jquery.easyui.min.js"></script>
+    <script src="~/Content/Jquery.Easyui/locale/easyui-lang-zh_CN.js"></script>
+    <script src="~/Content/Jquery/commjs.js"></script>
+    @RenderSection("footer", false)
 </body>
 </html>
