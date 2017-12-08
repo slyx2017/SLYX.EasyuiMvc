@@ -106,7 +106,7 @@ function ajaxResultHandler(result) {
         $('#dlg').dialog('close');
         $("#grid-roles").datagrid("reload");
     }
-    if (data.Statu == "err") {
+    if (data.Statu == "error") {
         $.messager.alert("系统提示", data.Msg, "error");
         $("#grid-roles").datagrid("reload");
     } else {

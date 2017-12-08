@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using log4net.Config;
 
 // 有关程序集的常规信息通过下列特性集
 // 控制。更改这些特性值可修改
@@ -13,6 +14,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright © Microsoft 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+[assembly: XmlConfigurator(ConfigFile = "Log4net.config", ConfigFileExtension = "config", Watch = true)]
 
 // 将 ComVisible 设置为 false 会使此程序集中的类型
 // 对 COM 组件不可见。如果需要

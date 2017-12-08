@@ -7,6 +7,10 @@ namespace SLYX.IBLL
 		{
 
 		}
+        public partial interface IBase_LogBLL : IBaseBLL<Base_Log>
+		{
+
+		}
         public partial interface IButtonBLL : IBaseBLL<Button>
 		{
 

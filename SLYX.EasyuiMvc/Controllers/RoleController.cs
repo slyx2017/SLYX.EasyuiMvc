@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace SLYX.EasyuiMvc.Controllers
 {
-    public class RoleController : Controller
+    public class RoleController : MvcControllerBase
     {
         private IBLL.IRoleBLL _roleBLL;
         public RoleController(IBLL.IRoleBLL rolebll)
@@ -34,7 +34,7 @@ namespace SLYX.EasyuiMvc.Controllers
 
         public ActionResult Add()
         {
-            AjaxMsgModel ajaxMsg = new AjaxMsgModel() { Statu = "err", Msg = "新增失败！" };
+            AjaxMsgModel ajaxMsg = new AjaxMsgModel() { Statu = "error", Msg = "新增失败！" };
             User sessionUser = Session["ainfo"] as User;
             Role roleModel = new Role();
             string RoleName = Request["RoleName"];
@@ -71,8 +71,7 @@ namespace SLYX.EasyuiMvc.Controllers
 
         public ActionResult DeleteList()
         {
-            AjaxMsgModel ajaxMsg = new AjaxMsgModel() { Statu = "err", Msg = "删除失败！" };
-            Role sessionUser = Session["ainfo"] as Role;
+            AjaxMsgModel ajaxMsg = new AjaxMsgModel() { Statu = "error", Msg = "删除失败！" };
             string ids = Request["ids"];
             string[] result = ids.Split(',');
             List<Role> listRole = new List<Role>();

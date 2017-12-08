@@ -10,6 +10,10 @@ namespace SLYX.IDAL
 		{
 
 		}
+        public partial interface IBase_LogDAL : IBaseDAL<Base_Log>
+		{
+
+		}
         public partial interface IButtonDAL : IBaseDAL<Button>
 		{
 

@@ -31,9 +31,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\SLYX.EasyuiMvc\bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\SLYX.EasyuiMvc\bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,9 +51,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AjaxMsgModel.cs" />
+    <Compile Include="AjaxResult.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="CommModel\IpModel.cs" />
+    <Compile Include="CommModel\OperationType.cs" />
     <Compile Include="CommonHelper.cs" />
+    <Compile Include="EnumAttribute.cs" />
     <Compile Include="GridDataHelper.cs" />
+    <Compile Include="IPAddressHelper.cs" />
+    <Compile Include="Json.cs" />
+    <Compile Include="LogHelper.cs" />
+    <Compile Include="Log\Log.cs" />
+    <Compile Include="Log\LogFactory.cs" />
+    <Compile Include="Log\LogFormat.cs" />
+    <Compile Include="Log\LogMessage.cs" />
+    <Compile Include="Net.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecurityHelper.cs" />
     <Compile Include="ValidateCode.cs" />

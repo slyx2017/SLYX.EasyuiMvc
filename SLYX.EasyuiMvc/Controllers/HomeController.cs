@@ -8,7 +8,7 @@ using SLYX.IBLL;
 using SLYX.Model;
 namespace SLYX.EasyuiMvc.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : MvcControllerBase
     {
         private IMenuBLL _menuBLL;
         public HomeController(IMenuBLL menubll)

@@ -54,6 +54,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="ExtentionBLL\LogBLL.cs" />
+    <Compile Include="ExtentionBLL\LogServiceBLL.cs" />
     <Compile Include="ExtentionBLL\UserBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

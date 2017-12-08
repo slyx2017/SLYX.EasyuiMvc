@@ -14,8 +14,7 @@ namespace SLYX.Model
     
     public partial class UserDepartment
     {
-        public int Id { get; set; }
-        public Nullable<int> UserId { get; set; }
+        public int UserId { get; set; }
         public Nullable<int> DepartmentId { get; set; }
     }
 }

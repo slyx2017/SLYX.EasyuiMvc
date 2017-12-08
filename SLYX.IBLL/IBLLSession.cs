@@ -7,6 +7,7 @@ namespace SLYX.IBLL
 		public interface IBLLSession
 		{
 		    IArticleBLL ArticleBLL{get;}
+		    IBase_LogBLL Base_LogBLL{get;}
 		    IButtonBLL ButtonBLL{get;}
 		    IDataTypeBLL DataTypeBLL{get;}
 		    IDepartmentBLL DepartmentBLL{get;}

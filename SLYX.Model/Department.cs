@@ -22,5 +22,6 @@ namespace SLYX.Model
         public string CreateBy { get; set; }
         public Nullable<System.DateTime> UpdateTime { get; set; }
         public string UpdateBy { get; set; }
+        public Nullable<bool> IsAble { get; set; }
     }
 }

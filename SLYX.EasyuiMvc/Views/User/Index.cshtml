@@ -45,6 +45,22 @@
     <a href="javascript:void(0)" class="easyui-linkbutton">提交</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:$('#dlgp').dialog('close')">关闭</a>
 </div>
+
+<div id="dlgdept" class="easyui-dialog" title="编辑部门" data-options="iconCls:'icon-save',closed:true,buttons: '#dlgdept-buttons'" style="width:500px;height:400px;padding:10px">
+    <form id="ffdept" method="post">
+        <input id="uId" name="uId" style="display:none;">
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" id="UserNameByDept" name="UserNameByDept" style="width:80%" data-options="label:'账号:',required:true,editable:false">
+        </div>
+        <div style="margin-bottom:20px">
+            <input class="easyui-combobox" id="sel_Deptment" name="sel_Deptment" style="width:80%;">
+        </div>
+    </form>
+</div>
+<div id="dlgdept-buttons">
+    <a href="javascript:void(0)" class="easyui-linkbutton">提交</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript: $('#dlgdept').dialog('close')">关闭</a>
+</div>
 @section footer{
 <script src="~/Content/Jquery/initUserjs.js"></script>
 }

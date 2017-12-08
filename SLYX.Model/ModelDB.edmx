@@ -14,6 +14,31 @@
           <Property Name="Content" Type="varchar" MaxLength="8000" />
           <Property Name="FilePath" Type="nvarchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="Base_Log">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="SourceObjectId" Type="varchar" MaxLength="50" />
+          <Property Name="SourceContentJson" Type="text" />
+          <Property Name="OperateTime" Type="datetime" />
+          <Property Name="OperateUserId" Type="varchar" MaxLength="50" />
+          <Property Name="OperateAccount" Type="varchar" MaxLength="50" />
+          <Property Name="OperateTypeId" Type="varchar" MaxLength="50" />
+          <Property Name="OperateType" Type="varchar" MaxLength="50" />
+          <Property Name="ModuleId" Type="varchar" MaxLength="50" />
+          <Property Name="Module" Type="varchar" MaxLength="50" />
+          <Property Name="IPAddress" Type="varchar" MaxLength="50" />
+          <Property Name="IPAddressName" Type="varchar" MaxLength="200" />
+          <Property Name="Host" Type="varchar" MaxLength="200" />
+          <Property Name="Browser" Type="varchar" MaxLength="50" />
+          <Property Name="ExecuteResult" Type="int" />
+          <Property Name="ExecuteResultJson" Type="text" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="DeleteMark" Type="int" />
+          <Property Name="EnabledMark" Type="int" />
+        </EntityType>
         <EntityType Name="Button">
           <Key>
             <PropertyRef Name="Id" />
@@ -54,6 +79,7 @@
           <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
           <Property Name="UpdateTime" Type="datetime" />
           <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsAble" Type="bit" />
         </EntityType>
         <EntityType Name="Fields">
           <Key>
@@ -234,10 +260,9 @@
         </EntityType>
         <EntityType Name="UserDepartment">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserId" Type="int" />
+          <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="DepartmentId" Type="int" />
         </EntityType>
         <EntityType Name="UserRole">
@@ -272,6 +297,7 @@
         </EntityType>
         <EntityContainer Name="SLYXZxDBModelStoreContainer">
           <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Base_Log" EntityType="Self.Base_Log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Button" EntityType="Self.Button" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DataType" EntityType="Self.DataType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
@@ -365,6 +391,7 @@
           <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateTime" Type="DateTime" Precision="3" />
           <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsAble" Type="Boolean" />
         </EntityType>
         <EntityType Name="Fields">
           <Key>
@@ -545,10 +572,9 @@
         </EntityType>
         <EntityType Name="UserDepartment">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="DepartmentId" Type="Int32" />
         </EntityType>
         <EntityContainer Name="ZxDBEntities" annotation:LazyLoadingEnabled="true">
@@ -573,6 +599,7 @@
           <EntitySet Name="UserDepartment" EntityType="Self.UserDepartment" />
           <EntitySet Name="UserRole" EntityType="SLYX.ZxDBModel.UserRole" />
           <EntitySet Name="User_Role_DeptView" EntityType="SLYX.ZxDBModel.User_Role_DeptView" />
+          <EntitySet Name="Base_Log" EntityType="SLYX.ZxDBModel.Base_Log" />
         </EntityContainer>
         <EntityType Name="UserRole">
           <Key>
@@ -601,6 +628,31 @@
           <Property Name="IsDel" Type="Boolean" />
           <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Base_Log">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="SourceObjectId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SourceContentJson" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OperateTime" Type="DateTime" Precision="3" />
+          <Property Name="OperateUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OperateAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OperateTypeId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OperateType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModuleId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Module" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IPAddressName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Host" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Browser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExecuteResult" Type="Int32" />
+          <Property Name="ExecuteResultJson" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DeleteMark" Type="Int32" />
+          <Property Name="EnabledMark" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -651,6 +703,7 @@
           <EntitySetMapping Name="Department">
             <EntityTypeMapping TypeName="SLYX.ZxDBModel.Department">
               <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="IsAble" ColumnName="IsAble" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
                 <ScalarProperty Name="ParentId" ColumnName="ParentId" />
@@ -856,7 +909,6 @@
           <EntitySetMapping Name="UserDepartment">
             <EntityTypeMapping TypeName="SLYX.ZxDBModel.UserDepartment">
               <MappingFragment StoreEntitySet="UserDepartment">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
               </MappingFragment>
@@ -889,6 +941,32 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="AccountName" ColumnName="AccountName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Base_Log">
+            <EntityTypeMapping TypeName="SLYX.ZxDBModel.Base_Log">
+              <MappingFragment StoreEntitySet="Base_Log">
+                <ScalarProperty Name="EnabledMark" ColumnName="EnabledMark" />
+                <ScalarProperty Name="DeleteMark" ColumnName="DeleteMark" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ExecuteResultJson" ColumnName="ExecuteResultJson" />
+                <ScalarProperty Name="ExecuteResult" ColumnName="ExecuteResult" />
+                <ScalarProperty Name="Browser" ColumnName="Browser" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+                <ScalarProperty Name="IPAddressName" ColumnName="IPAddressName" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="Module" ColumnName="Module" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="OperateType" ColumnName="OperateType" />
+                <ScalarProperty Name="OperateTypeId" ColumnName="OperateTypeId" />
+                <ScalarProperty Name="OperateAccount" ColumnName="OperateAccount" />
+                <ScalarProperty Name="OperateUserId" ColumnName="OperateUserId" />
+                <ScalarProperty Name="OperateTime" ColumnName="OperateTime" />
+                <ScalarProperty Name="SourceContentJson" ColumnName="SourceContentJson" />
+                <ScalarProperty Name="SourceObjectId" ColumnName="SourceObjectId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

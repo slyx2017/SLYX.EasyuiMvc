@@ -13,6 +13,12 @@ namespace SLYX.BLL
 		}
 
    
+		public IBase_LogBLL Base_LogBLL
+		{
+			get { return new Base_LogBLL(); }
+		}
+
+   
 		public IButtonBLL ButtonBLL
 		{
 			get { return new ButtonBLL(); }

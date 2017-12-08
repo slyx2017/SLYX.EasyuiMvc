@@ -57,6 +57,9 @@
     <Compile Include="Article.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Base_Log.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Button.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>

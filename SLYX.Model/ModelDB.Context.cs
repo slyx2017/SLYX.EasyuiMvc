@@ -46,5 +46,6 @@ namespace SLYX.Model
         public virtual DbSet<UserDepartment> UserDepartment { get; set; }
         public virtual DbSet<UserRole> UserRole { get; set; }
         public virtual DbSet<User_Role_DeptView> User_Role_DeptView { get; set; }
+        public virtual DbSet<Base_Log> Base_Log { get; set; }
     }
 }

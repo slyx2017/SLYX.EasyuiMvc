@@ -631,8 +631,7 @@ function LoginOut() {
         }
     })
 }
-
-//日期格式正确显示
+//日期格式正确显示yyyy-MM-dd
 function formatDatebox(value) {
     if (value == null || value == '') {
         return '';
@@ -651,6 +650,26 @@ function formatDatebox(value) {
     }
 
     return dt.format("yyyy-MM-dd");   //这里用到一个javascript的Date类型的拓展方法，这个是自己添加的拓展方法，在后面的步骤3定义  
+}
+//日期格式正确显示yyyy-MM-dd HH:mm:ss
+function formatFullDatebox(value) {
+    if (value == null || value == '') {
+        return '';
+    }
+    var dt;
+    if (value instanceof Date) {
+        dt = value;
+    }
+    else {
+        dt = new Date(value);
+        if (isNaN(dt)) {
+            value = eval(value.replace(/\/Date\((\d+)\)\//gi, "new Date($1)"));//(/\/Date(−?\d+)\//, 'new Date($1)'); //标红的这段是关键代码，将那个长字符串的日期值转换成正常的JS日期格式  
+            dt = new Date();
+            dt.setTime(value);
+        }
+    }
+
+    return dt.format("yyyy-MM-dd hh:mm:ss");   //这里用到一个javascript的Date类型的拓展方法，这个是自己添加的拓展方法，在后面的步骤3定义  
 }
 //扩展datagrid编辑日期格式正确显示
 $.extend(

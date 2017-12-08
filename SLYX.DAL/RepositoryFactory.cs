@@ -13,6 +13,12 @@ namespace SLYX.DAL
 			 }
 		
 
+			 public static IBase_LogDAL Base_LogDAL 
+			 {
+				 get { return new Base_LogDAL(); }
+			 }
+		
+
 			 public static IButtonDAL ButtonDAL 
 			 {
 				 get { return new ButtonDAL(); }
@@ -115,9 +121,21 @@ namespace SLYX.DAL
 			 }
 		
 
+			 public static IUser_Role_DeptViewDAL User_Role_DeptViewDAL 
+			 {
+				 get { return new User_Role_DeptViewDAL(); }
+			 }
+		
+
 			 public static IUserDepartmentDAL UserDepartmentDAL 
 			 {
 				 get { return new UserDepartmentDAL(); }
+			 }
+		
+
+			 public static IUserRoleDAL UserRoleDAL 
+			 {
+				 get { return new UserRoleDAL(); }
 			 }
 		
 }

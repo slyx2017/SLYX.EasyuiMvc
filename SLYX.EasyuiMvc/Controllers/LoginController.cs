@@ -42,13 +42,20 @@ namespace SLYX.EasyuiMvc.Controllers
         [HttpPost]
         public ActionResult Login(FormCollection form)
         {
-            AjaxMsgModel ajaxM = new AjaxMsgModel() { Statu = "err", Msg = "登录失败！" };
-
+            AjaxMsgModel ajaxM = new AjaxMsgModel() { Statu = "error", Msg = "登录失败！" };
+            Base_Log logEntity = new Base_Log();
+            
             //1.1 获取数据
             string strName = Request.Params["UserName"];
             string strPwd = Request.Params["Password"];
             string vcode = Request.Params["VCode"];
             bool isAllway=bool.Parse(Request.Params["isAllway"]);
+            logEntity.CategoryId = 1;
+            logEntity.OperateTypeId = ((int)OperationType.Login).ToString();
+            logEntity.OperateType = EnumAttribute.GetDescription(OperationType.Login);
+            logEntity.OperateAccount = strName;
+            logEntity.OperateUserId = strName;
+            logEntity.Module ="我的MVC";
             ////1.2 验证
             //if (vcode!=Session["vcode"].ToString().ToLower())
             //{
@@ -80,6 +87,9 @@ namespace SLYX.EasyuiMvc.Controllers
                 ajaxM.Statu = "ok";
                 ajaxM.Msg = "登录成功！";
                 ajaxM.BackUrl = "/Home/Index";//"/Login/LoginOK";
+                logEntity.ExecuteResult = 1;
+                logEntity.ExecuteResultJson = "登录成功";
+                logEntity.WriteLog();
                 return Json(ajaxM);
             }
             else

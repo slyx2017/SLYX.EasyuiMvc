@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExtentionIBLL\IBase_LogBLL.cs" />
     <Compile Include="ExtentionIBLL\IUserBLL.cs" />
     <Compile Include="IBaseBLL.cs" />
     <Compile Include="IBLL.cs">

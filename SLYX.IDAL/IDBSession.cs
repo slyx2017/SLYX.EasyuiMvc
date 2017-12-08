@@ -9,6 +9,7 @@ namespace SLYX.IDAL
 		public interface IDBSession
 		{
 		    IArticleDAL ArticleDAL{get;}
+		    IBase_LogDAL Base_LogDAL{get;}
 		    IButtonDAL ButtonDAL{get;}
 		    IDataTypeDAL DataTypeDAL{get;}
 		    IDepartmentDAL DepartmentDAL{get;}

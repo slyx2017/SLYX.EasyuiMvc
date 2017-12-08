@@ -26,6 +26,7 @@
         <EntityTypeShape EntityType="SLYX.ZxDBModel.UserDepartment" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SLYX.ZxDBModel.UserRole" Width="1.5" PointX="3.375" PointY="12.75" />
         <EntityTypeShape EntityType="SLYX.ZxDBModel.User_Role_DeptView" Width="1.5" PointX="5.375" PointY="12.75" />
+        <EntityTypeShape EntityType="SLYX.ZxDBModel.Base_Log" Width="1.5" PointX="7.375" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

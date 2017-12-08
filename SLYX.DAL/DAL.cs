@@ -9,6 +9,10 @@ namespace SLYX.DAL
 		{
 
 		}
+        public partial class Base_LogDAL : BaseDAL<Base_Log>, IBase_LogDAL
+		{
+
+		}
         public partial class ButtonDAL : BaseDAL<Button>, IButtonDAL
 		{
 

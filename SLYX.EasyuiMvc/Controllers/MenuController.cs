@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace SLYX.EasyuiMvc.Controllers
 {
-    public class MenuController : Controller
+    public class MenuController : MvcControllerBase
     {
         private IBLL.IMenuBLL _menuBLL;
 
@@ -30,5 +30,6 @@ namespace SLYX.EasyuiMvc.Controllers
             var result = new { total = total, rows = data };
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
     }
 }

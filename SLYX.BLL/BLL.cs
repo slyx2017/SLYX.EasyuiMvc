@@ -1,16 +1,26 @@
 ﻿
 using System;
+using SLYX.Model;
+
 namespace SLYX.BLL
 {
 
         public partial class ArticleBLL : BaseBLL<Model.Article>, IBLL.IArticleBLL
 		{
 		    public override void SetCurrentRepository()
-			{
+        {
 				//设置当前仓储为Article仓储
 				CurrentRepository = _dbSession.ArticleDAL;
 			}
 		}
+        public partial class Base_LogBLL : BaseBLL<Model.Base_Log>, IBLL.IBase_LogBLL
+		{
+		    public override void SetCurrentRepository()
+			{
+				//设置当前仓储为Base_Log仓储
+				CurrentRepository = _dbSession.Base_LogDAL;
+			}
+        }
         public partial class ButtonBLL : BaseBLL<Model.Button>, IBLL.IButtonBLL
 		{
 		    public override void SetCurrentRepository()

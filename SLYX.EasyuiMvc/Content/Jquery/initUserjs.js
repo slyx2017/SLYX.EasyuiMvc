@@ -42,7 +42,7 @@
                     if (data.Statu == "ok") {
                         $("#grid-users").datagrid("reload").datagrid('clearSelections');
                     }
-                    if (data.Statu == "err") {
+                    if (data.Statu == "error") {
                         $.messager.alert("系统提示", data.Msg, "error");
                     } else {
                         $.messager.alert("系统提示", data.Msg, "warning");
@@ -91,14 +91,50 @@
         });
         $("#dlgp-buttons a:first").attr("onclick", "submitFormP(); return false;")
     };
+    var addDetpment = function () {
+        var row = $("#grid-users").datagrid("getSelections");
+        if (row.length == 0) {
+            $.messager.alert("系统提示", "请先选中要设置部门的行。", "warning");
+            return;
+        }
+        if (row.length > 1) {
+            $.messager.alert("系统提示", "请选中一条要设置部门的行。", "warning");
+            return;
+        }
+        $('#dlgdept').dialog('open');
+        $("#uId").val(row[0].ID);
+        $("#UserNameByDept").textbox("setValue", row[0].AccountName);
 
+        $.ajax({
+            url: '/User/SelDeptList',
+            data: { "UserId": "" + row[0].ID + "" },
+            success: function (data) {
+                //var obj = JSON.parse(data);
+                if (data.Statu == "ok") {
+                    var selId = data.Msg;
+                    $("#sel_Deptment").combobox({
+                        label: '部门:',
+                        valueField: 'Id',
+                        textField: 'DepartmentName',
+                        value: selId,
+                        data: data.Data
+                    });
+                }
+                else {
+                    $.messager.alert("系统提示", data.Msg, "error");
+                    return;
+                }
+            }
+        });
+        $("#dlgdept-buttons a:first").attr("onclick", "submitFormDept(); return false;")
+    };
     var toolbarNavItems =
         [
             { text: "增加", iconCls: "icon-add", handler: addNewRow }, 
             { text: "编辑", iconCls: "icon-edit", handler: beginEdit },
             { text: "删除", iconCls: "icon-remove", handler: deleteRows }, '-',
             { text: "设置角色", iconCls: "icon-large-chart", handler: addPermission },
-            { text: "设置部门", iconCls: "icon-large-clipart" }
+            { text: "设置部门", iconCls: "icon-large-clipart", handler: addDetpment }
         ];
 
     $("#grid-users").datagrid({
@@ -170,15 +206,31 @@ function submitFormP() {
         success: ajaxResultHandler
     });
 }
+
+function submitFormDept() {
+    $('#ffdept').form('submit', {
+        url: "/User/AddDept",
+        onSubmit: function () {
+            return $(this).form('validate');
+            //var accountname = $("#AccountName").val();
+            //if (accountname == "") {
+            //    $.messager.alert("系统提示", "账号不能为空", "warning");
+            //    return false;
+            //}
+        },
+        success: ajaxResultHandler
+    });
+}
 function ajaxResultHandler(result) {
     var data = JSON.parse(result);
     if (data.Statu == "ok") {
         clearForm();
         $('#dlg').dialog('close');
         $('#dlgp').dialog('close');
+        $('#dlgdept').dialog('close');
         $("#grid-users").datagrid("reload");
     }
-    if (data.Statu == "err") {
+    if (data.Statu == "error") {
         $.messager.alert("系统提示", data.Msg, "error");
         $("#grid-users").datagrid("reload");
     } else {
@@ -190,4 +242,5 @@ function clearForm()
 {
     $('#ff').form("clear");
     $('#ffp').form("clear");
+    $('#ffdept').form("clear");
 }

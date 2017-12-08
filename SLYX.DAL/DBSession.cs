@@ -13,6 +13,12 @@ namespace SLYX.DAL
 		}
 		
 
+		public IBase_LogDAL Base_LogDAL
+		{
+			get { return new Base_LogDAL(); }
+		}
+		
+
 		public IButtonDAL ButtonDAL
 		{
 			get { return new ButtonDAL(); }
