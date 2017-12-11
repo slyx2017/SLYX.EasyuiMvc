@@ -1,25 +1,42 @@
 ﻿
 @{
     ViewBag.Title = "菜单列表";
-    Layout = "~/Views/Shared/_LayoutDataGrid.cshtml";
-    ViewBag.GridId = "menus";
-    ViewBag.GridDataUrl = Url.Action("MenuList");
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div id="grid-menus"></div>
 
-@section customScript{
-    <script type="text/javascript">
-        var  columns = [[{title:'Id',field:'Id',align:'left',width:70,hidden:true},
-          {title:'菜单名',field:'Name',align:'left',width:70},
-          {title:'父节点',field:'ParentId',align:'left',width:70},
-          {title:'编码',field:'Code',align:'left',width:70},
-          {title:'路径',field:'LinkAddress',align:'left',width:70},
-          {title:'图标',field:'Icon',align:'left',width:70},
-          {title:'排序',field:'Sort',align:'left',width:70},
-          { title: '创建时间', field: 'CreateTime', align: 'left', width: 70, formatter: formatDatebox },
-          {title:'创建人',field:'CreateBy',align:'left',width:70},
-          { title: '更新时间', field: 'UpdateTime', align: 'left', width: 70, formatter: formatDatebox },
-          {title:'更新人',field:'UpdateBy',align:'left',width:70}
-        ]];
-    </script>
+<div id="dlg" class="easyui-dialog" title="编辑菜单" data-options="iconCls:'icon-save',closed:true,buttons: '#dlg-buttons'" style="width:500px;height:400px;padding:10px">
+    <form id="ff" method="post">
+        <input id="hideId" name="hideId" style="display:none;">
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" id="MenuName" name="MenuName" style="width:80%" data-options="label:'菜单:',required:true">
+        </div>
+        <div style="margin-bottom:20px">
+           <input class="easyui-combobox" id="ParentId" name="ParentId" style="width:80%;">
+        </div>
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" id="Code" name="Code" style="width:80%" data-options="label:'编码:'">
+        </div>
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" id="Icon" name="Icon" style="width:80%" data-options="label:'图标:'">
+        </div>
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" id="LinkAddress" name="LinkAddress" style="width:80%" data-options="label:'路径:'">
+        </div>
+        <div style="margin-bottom:20px">
+            <input class="easyui-numberbox" id="Sort" name="Sort" style="width:80%" data-options="label:'排序:',min:1">
+        </div>
+        @*<div style="margin-bottom:20px">
+            <select class="easyui-combobox" id="IsAble" name="IsAble" data-options="label:'是否启用:',required:true,editable:false" style="width:80%"><option value="1">是</option><option value="0">否</option></select>
+        </div>*@
+    </form>
+</div>
+<div id="dlg-buttons">
+    <a href="javascript:void(0)" class="easyui-linkbutton">提交</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:$('#dlg').dialog('close')">关闭</a>
+</div>
+
+@section footer{
+    <script src="~/Content/Jquery/initMenu.js"></script>
 }
 
